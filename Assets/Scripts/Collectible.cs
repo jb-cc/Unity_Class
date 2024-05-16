@@ -5,7 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 public class Collectible : MonoBehaviour
-{
+{       
     void Awake()  {
 
     }
@@ -30,6 +30,12 @@ public class Collectible : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.name == "Player")
+        {
+            Destroy(gameObject);
+            GameManager.Instance.Score += 10;
+            Debug.Log("Score: " + GameManager.Instance.Score);
+        }
+        
     }
 }
