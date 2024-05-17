@@ -217,6 +217,10 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 2321377359009570186, guid: 82d21431afdd6944c99c9e4a904205ff, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4629175993121031695, guid: 82d21431afdd6944c99c9e4a904205ff, type: 3}
       propertyPath: m_Name
       value: Player
@@ -275,11 +279,11 @@ PrefabInstance:
       objectReference: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
     - target: {fileID: 9192510238280592327, guid: 82d21431afdd6944c99c9e4a904205ff, type: 3}
       propertyPath: _velocity
-      value: 2
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 9192510238280592327, guid: 82d21431afdd6944c99c9e4a904205ff, type: 3}
       propertyPath: movementType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9192510238280592327, guid: 82d21431afdd6944c99c9e4a904205ff, type: 3}
       propertyPath: selectedForceMode
