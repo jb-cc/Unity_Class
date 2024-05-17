@@ -74,7 +74,7 @@ public class Movement : MonoBehaviour
     {
         if (!_isJumping)
         {
-            _rigidbody.AddForce(Vector3.up * 50, selectedForceMode);
+            _rigidbody.AddForce(Vector3.up * 6, selectedForceMode);
             _isJumping = true;
             Debug.Log("Jump");
         }
