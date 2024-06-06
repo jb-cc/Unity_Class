@@ -18,7 +18,10 @@ public class Movement : MonoBehaviour
     private ForceMode selectedForceMode;
     [SerializeField]
     private MovementType movementType;
-
+    [SerializeField] 
+    private GameObject playerFigure;
+    
+    private Animator _animator;
     
     private Vector3 movementDirection3d;
     private Rigidbody _rigidbody;
@@ -29,6 +32,8 @@ public class Movement : MonoBehaviour
     void Start()
     {
         _rigidbody = gameObject.GetComponent<Rigidbody>();
+        _animator = playerFigure.GetComponent<Animator>();
+        
         if (_rigidbody == null)
         {
             Debug.LogError("Rigidbody not found");
@@ -42,7 +47,7 @@ public class Movement : MonoBehaviour
             gameObject.transform.position += new Vector3(0, 0, -1f) * _velocity;*/ 
        PerformMovement();
 
-       if (_isJumping && _rigidbody.velocity.y == 0)
+       if (_isJumping && _rigidbody.velocity.y < 0.05)
        {
            _isJumping = false;
        }
@@ -50,6 +55,9 @@ public class Movement : MonoBehaviour
 
     void PerformMovement()
     {
+        _animator.SetBool("isWalking", movementDirection3d.magnitude > 0);
+        _animator.SetBool("isJumping", _isJumping);
+
         if (movementType == MovementType.TransformBased)
         { 
             gameObject.transform.position += movementDirection3d * _velocity;
@@ -58,10 +66,6 @@ public class Movement : MonoBehaviour
         {
             _rigidbody.AddForce(movementDirection3d, selectedForceMode);
         }
-        
-        
- 
-
     }
     
     void OnMovement(InputValue inputValue)
@@ -72,6 +76,7 @@ public class Movement : MonoBehaviour
 
     void OnJump(InputValue inputValue)
     {
+        
         if (!_isJumping)
         {
             _rigidbody.AddForce(Vector3.up * 6, selectedForceMode);
